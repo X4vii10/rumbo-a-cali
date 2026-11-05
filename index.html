@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rumbo a Cali</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Rumbo a Cali">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#e8467c">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#fff1f5;--fg:#4a1d2e;--muted:#9a6277;--card:#ffffff;--accent:#e8467c;--soft:#ffd6e4;--line:#f5c2d4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a0f1a;--fg:#ffe8f0;--muted:#d9a3b9;--card:#3b1726;--accent:#ff7aa8;--soft:#52213a;--line:#6b2c49}}
+:root[data-theme="dark"]{--bg:#2a0f1a;--fg:#ffe8f0;--muted:#d9a3b9;--card:#3b1726;--accent:#ff7aa8;--soft:#52213a;--line:#6b2c49}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55}
+main{max-width:560px;margin:0 auto;padding:20px 16px 48px}
+h1,h2{font-family:'Dancing Script','Brush Script MT',cursive;font-weight:700;margin:0}
+h1{font-size:clamp(2.6rem,12vw,3.6rem);color:var(--accent);text-align:center;line-height:1.05}
+h2{font-size:1.9rem;color:var(--accent);margin-bottom:10px}
+.sub{text-align:center;color:var(--muted);margin:6px 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin:16px 0;box-shadow:0 6px 20px rgba(232,70,124,.08)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.count div{background:var(--soft);border-radius:16px;padding:12px 4px}
+.count b{display:block;font-size:1.9rem;color:var(--accent);font-variant-numeric:tabular-nums}
+.count span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.mini{text-align:center;margin-top:12px;color:var(--muted);font-size:.95rem}
+.mini b{color:var(--accent)}
+svg{width:100%;height:auto;display:block}
+.pl{display:flex;justify-content:space-between;font-weight:700;font-size:.9rem;margin-top:2px}
+.msg{border-top:1px dashed var(--line);padding:12px 0}
+.msg:first-of-type{border-top:0}
+.msg small{color:var(--muted);display:block;margin-bottom:2px}
+.lock{color:var(--muted);font-style:italic}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.open{background:var(--soft);border:0;border-radius:16px;padding:14px 10px;color:var(--fg);font:inherit;font-weight:700;cursor:pointer;text-align:center}
+.open.on{background:var(--card);border:1px solid var(--line);font-weight:400;text-align:left;grid-column:1/-1}
+.open.on b{display:block;color:var(--accent);margin-bottom:4px}
+ul{list-style:none;padding:0;margin:0}
+li{display:flex;gap:10px;align-items:flex-start;padding:8px 0}
+li input{accent-color:var(--accent);width:20px;height:20px;margin-top:3px}
+li.done span{text-decoration:line-through;color:var(--muted)}
+.add{display:flex;gap:8px;margin-top:10px}
+.add input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:14px;padding:10px 12px;font:inherit}
+.add button,.btn{background:var(--accent);color:#fff;border:0;border-radius:14px;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer}
+.q{font-size:1.15rem;text-align:center;padding:6px 4px}
+.foot{text-align:center;color:var(--muted);margin-top:28px;font-family:'Dancing Script',cursive;font-size:1.5rem}
+</style>
+</head>
+<body>
+<main>
+<h1>Rumbo a Cali</h1>
+<p class="sub">Para el amor de mi vida, la mujer de mis sueños</p>
+
+<section class="card">
+  <div class="count" id="count"></div>
+  <p class="mini" id="mini"></p>
+</section>
+
+<section class="card">
+  <svg viewBox="0 0 320 110" aria-label="Ruta en bus de Caracas a Cali">
+    <path d="M280 55 Q160 5 40 80" fill="none" stroke="var(--line)" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+    <path id="trail" d="M280 55 Q160 5 40 80" pathLength="1" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0 1"/>
+    <circle cx="280" cy="55" r="6" fill="var(--accent)"/><circle cx="40" cy="80" r="6" fill="var(--accent)"/>
+    <text id="plane" font-size="22" text-anchor="middle" x="280" y="48">🚌</text>
+  </svg>
+  <div class="pl"><span>Cali</span><span>Caracas</span></div>
+  <p class="mini" id="prog"></p>
+</section>
+
+<section class="card">
+  <h2>Sorpresas para ti</h2>
+  <div id="msgs"></div>
+</section>
+
+<section class="card">
+  <h2>Ábrelo cuando…</h2>
+  <div class="grid" id="when"></div>
+</section>
+
+<section class="card">
+  <h2>Pregunta de hoy para nosotros</h2>
+  <p class="q" id="dq"></p>
+  <p class="mini">Respóndela en nuestra próxima videollamada.</p>
+</section>
+
+<section class="card">
+  <h2>Nuestro primer día juntos</h2>
+  <ul id="plan"></ul>
+  <div class="add"><input id="idea" placeholder="Agrega una idea tuya…" maxlength="80"><button id="addb">Agregar</button></div>
+</section>
+
+<section class="card">
+  <h2>Cuando sea nuevamente 14 de febrero: nuestro primer año</h2>
+  <p>Qué mejor que celebrar nuestro primer año juntos, personalmente, lo que tanto queríamos por fin. Haremos los mejores recuerdos juntos, amándonos y disfrutando.</p>
+</section>
+
+<p class="foot">Contigo, siempre</p>
+</main>
+
+<script>
+// ====== EDITA AQUÍ ======
+var START  = new Date(2026,10,5);      // día en que empieza la cuenta
+var TARGET = new Date(2027,1,3,8,0,0); // llegada a Cali (ajustar fecha exacta)
+var ANNIV  = new Date(2027,1,14,0,0,0);// 14 de febrero
+var MSGS = [
+ {d:0,t:"Hola, mi reina. Esta página nació porque no quiero solo contar los días: quiero llegar a ti con todo el cariño del mundo. Cada sorpresa que se abra es un abrazo que te mando por adelantado."},
+ {d:9,t:"Mi vida, qué locura: dos países, una pantalla… y aun así me haces sentir en casa. Pronto me subo a un bus con un solo destino: tú. Y esa pantalla se acaba para abrazarte de verdad."},
+ {d:25,t:"Amorcito, reto: cuando llegue, enséñame tu comida favorita de Cali. Yo pongo el hambre y tú el menú."},
+ {d:39,t:"Mi cielo, ya me imaginé mil veces cuando abras la puerta. En todas me quedo mudo un segundo… y después no te suelto más."},
+ {d:55,t:"Mi cochinita hermosa. Aviso oficial: estoy practicando el abrazo largo. Voy a necesitar mínimo cinco minutos."},
+ {d:70,t:"Reina, falta poquito. Ve pensando qué haremos el primer día, y no vale decir “lo que tú quieras”."},
+ {d:85,t:"Amorcito, casi llego. Gracias por cada buenos días y cada buenas noches. Nos vemos muy pronto, mi vida."}
+];
+var WHEN = [
+ ["me extrañes","Cierra los ojos un momentico. Estoy a una llamada de distancia y a unos días de estar a tu lado. Escríbeme ahora mismo, sin importar la hora. Te amo, mi vida."],
+ ["estés triste","Respira, mi cielo. No estás sola. Mándame un “ayuda” y paro todo para hacerte reír y abrazarte con las palabras hasta que llegue el abrazo de verdad."],
+ ["quieras reírte","Nos ponemos retos divertidos después de jugar un juego competitivo."],
+ ["no puedas dormir","Llámame hasta que te quedes completamente dormida, estaré siempre para ti en todo momento, mi vida."]
+];
+var PLAN = ["El abrazo más largo de la historia","Comer lo que tú elijas","Caminar de la mano sin mirar el reloj","Intentar bailar salsa (sin juzgar mi ritmo)","Nuestra primera foto juntos, de las que se imprimen"];
+var QS = ["¿Qué fue lo primero que pensaste de mí cuando nos conocimos?","¿Qué es lo que más te gusta de mí?","¿Qué canción te recuerda a mí?","Si pudieras elegir cualquier desayuno para mañana, ¿cuál sería?","¿Qué cosa sencilla que hago te hace sentir más querida?","¿Cuál es el mejor consejo que te he dado?","¿Qué lugar de tu casa es tu favorito y por qué?","¿Qué te gustaría aprender a hacer conmigo?","¿Qué es lo más bonito de que nos conozcamos a través de una pantalla?","¿Cuál es tu hora favorita del día y por qué?","Si nuestra historia fuera una película, ¿cómo se llamaría?","¿Qué plato de tu infancia te hace feliz con solo olerlo?","¿Qué te hace sentir más tranquila cuando el día está pesado?","¿Cuál es el mensaje mío que más has disfrutado?","¿Qué lugar de Cali quieres que conozca primero?","¿Qué es lo más loco que has hecho por diversión?","¿Qué hábito mío te parece más tierno?","¿Cómo sería tu día perfecto, de la mañana a la noche?","¿Qué película o serie te gustaría ver conmigo?","¿Qué es lo que más admiras de ti misma?","¿Qué te gustaría que hiciéramos juntos cada domingo?","¿Cuál es tu recuerdo de infancia favorito?","¿Qué cosa te hace reír sin poder parar?","¿Qué detalle pequeño te enamoraría para siempre?","¿Qué apodo te gustaría que te dijera más seguido?","¿Cuál fue la mejor videollamada que hemos tenido?","¿Qué parte de nuestra rutina diaria es tu favorita?","Si pudiéramos viajar a cualquier país juntos, ¿cuál elegirías?","¿Qué te gustaría que supiera de ti que todavía no sé?","¿Qué canción quisieras que fuera nuestra?","¿Cuál es tu postre favorito en el mundo?","¿Qué crees que haríamos primero en un día solos?","¿A qué personaje de película te pareces cuando estás de buen humor?","¿Qué te hace sentir orgullosa de tu familia?","¿Qué sueño de cuando eras niña sigue vivo?","¿Qué es lo más bonito que alguien ha hecho por ti?","¿Qué color de ropa crees que me queda mejor?","¿Prefieres playa, montaña o ciudad para una escapada?","¿Cuál dirías que es tu talento más escondido?","¿Qué es lo que más imaginas de cuando estemos juntos?","¿Qué te gustaría que cocináramos juntos la primera noche?","¿Cuál es tu lugar favorito en el mundo, aunque no hayas ido?","¿Qué es lo que más te emociona de febrero?","¿Qué cosa nueva quieres probar este año?","¿Qué frase le dirías a la tú de hace un año?","¿Cuál es la cosa más tierna que te he dicho?","¿Qué te hace sentir en casa?","¿Qué regalo recordarás siempre?","¿Cómo te imaginas nuestro primer paseo juntos?","Si pudieras pedirme algo de Venezuela para que lo lleve a Cali, ¿qué sería?","¿Qué es lo mejor que te ha pasado este mes?","¿En qué momento del día piensas más en mí?","¿Qué te gustaría que hiciéramos para celebrar nuestro primer año?","¿Cuál es tu recuerdo favorito de nuestra primera videollamada?","¿Qué haces cuando quieres sentirme cerca?","¿Qué comida venezolana te gustaría probar conmigo?","¿Qué cosa te da más ternura en el mundo?","¿Cómo te gustaría que fuera nuestra primera foto juntos?","¿Qué es lo más divertido que hemos hecho a distancia?","¿Qué lugar de tu ciudad te hace sentir más tú?","¿Qué es lo que más te gusta de nuestra historia?","¿Qué meta quieres lograr este año y cómo puedo ayudarte?","¿Qué plan haríamos si lloviera todo el día?","¿Qué crees que haremos primero al vernos: reír o abrazarnos?","¿Qué película te hace llorar siempre?","¿Cuál es tu dato curioso favorito?","¿Qué te gustaría que nunca dejáramos de hacer?","¿Qué momento de este año te hizo sonreír más?","¿Cómo describirías nuestra relación en tres palabras?","¿Qué te gustaría escribirme en una carta?","¿Qué quieres que haga para que tu primer día conmigo sea perfecto?","¿Qué canción pondrías de fondo cuando nos veamos?","¿Qué lugar de Cali tiene una historia especial para ti?","¿Qué es lo que más quieres que conozca de tu mundo?","¿Qué cosa pequeña de mí quieres descubrir en persona?","¿Qué regalo sin costo te haría más feliz?","¿Qué te gustaría que te dijera en el primer minuto cuando nos veamos?","¿Qué plan para el 14 de febrero te hace más ilusión?","¿Qué ropa te gustaría ponerte el día que nos veamos?","¿Cuál es tu mayor ilusión para esta etapa que viene?","Faltan pocas semanas: ¿cómo te sientes con todo lo que viene?","¿Qué quieres que hagamos el primer fin de semana?","¿Qué es lo primero que me vas a enseñar de tu ciudad?","¿Qué te gustaría que preparara para sorprenderte?","¿Qué cosa quisieras decirme mirándome a los ojos?","¿Cómo imaginas el momento exacto en que nos veamos?","¿Qué recuerdo quieres que creemos juntos en este viaje?","¿Qué es lo que más agradeces de estos meses juntos?","¿Qué quieres que recordemos de esta espera cuando ya estemos juntos?","Última pregunta antes de llegar: ¿lista para el abrazo más largo de la historia?","¿Cuál es tu recuerdo favorito de nosotros hasta hoy?","Si pudiéramos teletransportarnos hoy, ¿adónde iríamos?","¿Qué canción te recuerda a mí?","¿Qué es lo primero que quieres hacer cuando nos veamos?","¿Qué te hizo reír más de nosotros esta semana?","¿Cómo imaginas nuestro primer desayuno juntos?","¿Qué comida quieres que cocinemos juntos?","¿Qué te gustaría que nunca cambiara entre nosotros?","¿Qué película verías conmigo mil veces?","¿Cuál fue el momento en que supiste que esto iba en serio?","Si tuviéramos un día sin plan en Cali, ¿qué harías?","¿Qué apodo nuevo me pondrías?","¿Qué sueño quisieras que cumpliéramos juntos?","¿Qué es lo que más te gusta de nuestras videollamadas?"];
+// ========================
+
+var $=function(i){return document.getElementById(i)};
+function two(n){return n<10?"0"+n:""+n}
+function fmt(d){return d.toLocaleDateString("es",{day:"numeric",month:"long"})}
+
+function tick(){
+  var now=new Date(), ms=TARGET-now;
+  if(ms<=0){$("count").innerHTML='<div style="grid-column:1/-1"><b>¡Hoy es el día!</b><span>Ya estoy contigo</span></div>';}
+  else{
+    var s=Math.floor(ms/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),sc=s%60;
+    $("count").innerHTML=[[d,"días"],[two(h),"horas"],[two(m),"min"],[two(sc),"seg"]].map(function(x){return "<div><b>"+x[0]+"</b><span>"+x[1]+"</span></div>"}).join("");
+  }
+  var ad=Math.ceil((ANNIV-now)/864e5);
+  $("mini").innerHTML=ad>0?"Y para nuestro primer año, el <b>14 de febrero</b>, faltan <b>"+ad+"</b> días":"¡Feliz primer año, mi vida!";
+  var t=Math.max(0,Math.min(1,(now-START)/(TARGET-START)));
+  var x=(1-t)*(1-t)*280+2*(1-t)*t*160+t*t*40, y=(1-t)*(1-t)*55+2*(1-t)*t*5+t*t*80;
+  $("plane").setAttribute("x",x);$("plane").setAttribute("y",y-8);
+  $("trail").setAttribute("stroke-dasharray",t+" 1");
+  $("prog").textContent="Ya recorrimos el "+Math.round(t*100)+"% del camino";
+}
+tick();setInterval(tick,1000);
+
+(function(){
+  var now=new Date();
+  $("msgs").innerHTML=MSGS.map(function(m){
+    var u=new Date(START.getTime()+m.d*864e5);
+    return u<=now?'<div class="msg"><small>'+fmt(u)+'</small>'+m.t+'</div>':'<div class="msg lock">Se abre el '+fmt(u)+'</div>';
+  }).join("");
+  var w=$("when");
+  WHEN.forEach(function(x){
+    var b=document.createElement("button");b.className="open";b.textContent="Ábrelo cuando "+x[0];
+    b.onclick=function(){b.className="open on";b.innerHTML="<b>Cuando "+x[0]+"</b>"+x[1]};
+    w.appendChild(b);
+  });
+  var di=Math.floor((now-START)/864e5);
+  $("dq").textContent=QS[((di%QS.length)+QS.length)%QS.length];
+})();
+
+var st={done:{},custom:[]};
+try{var r=localStorage.getItem("rumbo-cali");if(r)st=JSON.parse(r)}catch(e){}
+if(!st.done)st.done={};if(!st.custom)st.custom=[];
+function save(){try{localStorage.setItem("rumbo-cali",JSON.stringify(st))}catch(e){}}
+function plan(){
+  var all=PLAN.concat(st.custom);
+  $("plan").innerHTML="";
+  all.forEach(function(t,i){
+    var li=document.createElement("li");if(st.done[i])li.className="done";
+    var c=document.createElement("input");c.type="checkbox";c.checked=!!st.done[i];
+    c.onchange=function(){st.done[i]=c.checked;save();plan()};
+    var s=document.createElement("span");s.textContent=t;
+    li.appendChild(c);li.appendChild(s);$("plan").appendChild(li);
+  });
+}
+plan();
+$("addb").onclick=function(){var v=$("idea").value.trim();if(!v)return;st.custom.push(v);$("idea").value="";save();plan()};
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
