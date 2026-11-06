@@ -1,5 +1,5 @@
 // Cambia este número cada vez que actualices la web, para que se refresque en su teléfono
-const CACHE = 'rumbo-cali-v1';
+const CACHE = 'rumbo-cali-v2';
 const ASSETS = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', function (e) {
